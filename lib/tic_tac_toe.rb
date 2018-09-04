@@ -1,14 +1,14 @@
 class TicTacToe
-  def initialize( = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
-    @@board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  def initialize(= [" ", " ", " ", " ", " ", " ", " ", " ", " "])
+    @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
     # Helper Method
     def display_@board
-      puts " #{@@board[0]} | #{@@board[1]} | #{@@board[2]} "
+      puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
       puts "-----------"
-      puts " #{@@board[3]} | #{@@board[4]} | #{@@board[5]} "
+      puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
       puts "-----------"
-      puts " #{@@board[6]} | #{@@board[7]} | #{@@board[8]} "
+      puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
     end
 
     def input_to_index(user_input)
@@ -16,14 +16,14 @@ class TicTacToe
     end
 
     def move(index, current_player)
-      @@board[index] = current_player
+      @board[index] = current_player
     end
 
-    def valid_move?( pos)
-      pos.between?(0,8) && !position_taken?( pos)
+    def valid_move?(pos)
+      pos.between?(0,8) && !position_taken?(pos)
     end
 
-    def position_taken?( pos)
+    def position_taken?(pos)
       !([pos].nil? || @board[pos] == " ")
     end
 
@@ -32,10 +32,10 @@ class TicTacToe
       #This is my method NOT using recursion
       puts "Please enter 1-9:"
       input = input_to_index(gets.chomp)
-      if valid_move?( input) == false
+      if valid_move?(input) == false
         input = gets.chomp
       else
-        move( input, current_player())
+        move(input, current_player())
       end
       display_@board()
     end
