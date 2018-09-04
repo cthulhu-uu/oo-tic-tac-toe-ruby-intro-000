@@ -35,9 +35,9 @@ class TicTacToe
       if valid_move?(input) == false
         input = gets.chomp
       else
-        move(input, current_player())
+        move(input, current_player(@board))
       end
-      display_@board()
+      display_board
     end
 
     def play()
