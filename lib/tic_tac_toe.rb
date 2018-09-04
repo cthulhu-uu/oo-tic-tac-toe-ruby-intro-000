@@ -1,14 +1,14 @@
 class TicTacToe
-  def initialize(board = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
-    @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
+  def initialize( = [" ", " ", " ", " ", " ", " ", " ", " ", " "])
+    @@board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
   end
     # Helper Method
-    def display_board
-      puts " #{@board[0]} | #{@board[1]} | #{@board[2]} "
+    def display_@board
+      puts " #{@@board[0]} | #{@@board[1]} | #{@@board[2]} "
       puts "-----------"
-      puts " #{@board[3]} | #{@board[4]} | #{@board[5]} "
+      puts " #{@@board[3]} | #{@@board[4]} | #{@@board[5]} "
       puts "-----------"
-      puts " #{@board[6]} | #{@board[7]} | #{@board[8]} "
+      puts " #{@@board[6]} | #{@@board[7]} | #{@@board[8]} "
     end
 
     def input_to_index(user_input)
@@ -16,46 +16,46 @@ class TicTacToe
     end
 
     def move(index, current_player)
-      @board[index] = current_player
+      @@board[index] = current_player
     end
 
-    def valid_move?(board, pos)
-      pos.between?(0,8) && !position_taken?(board, pos)
+    def valid_move?(, pos)
+      pos.between?(0,8) && !position_taken?(, pos)
     end
 
-    def position_taken?(board, pos)
-      !(board[pos].nil? || board[pos] == " ")
+    def position_taken?(, pos)
+      !([pos].nil? || @board[pos] == " ")
     end
 
 
-    def turn(board)
+    def turn()
       #This is my method NOT using recursion
       puts "Please enter 1-9:"
       input = input_to_index(gets.chomp)
-      if valid_move?(board, input) == false
+      if valid_move?(, input) == false
         input = gets.chomp
       else
-        move(board, input, current_player(board))
+        move(, input, current_player())
       end
-      display_board(board)
+      display_@board()
     end
 
-    def play(board)
+    def play()
       turn_num = 0
-      while turn_num < 10 && !over?(board)
-        turn(board)
+      while turn_num < 10 && !over?()
+        turn()
         turn_num +=1
       end
-      if won?(board)
-        puts "Congratulations #{winner(board)}!"
-      elsif draw?(board)
+      if won?()
+        puts "Congratulations #{winner()}!"
+      elsif draw?()
         puts "Cat's Game!"
       end
     end
 
-    def turn_count(board)
+    def turn_count()
       count = 0
-      board.each do |pos|
+      @board.each do |pos|
         if pos != " "
           count +=1
         end
@@ -63,8 +63,8 @@ class TicTacToe
       return count
     end
 
-    def current_player(board)
-      if turn_count(board).even?
+    def current_player()
+      if turn_count().even?
         return "X"
       end
       return "O"
@@ -85,38 +85,38 @@ class TicTacToe
       [2,4,6] # diagonal two
     ]
 
-    def won?(board)
+    def won?()
       WIN_COMBINATIONS.each do |win|
-        if board[win[0]] == "X" && board[win[1]] == "X" && board[win[2]] == "X"
+        if @board[win[0]] == "X" && @board[win[1]] == "X" && @board[win[2]] == "X"
           return win
         elsif
-          board[win[0]] == "O" && board[win[1]] == "O" && board[win[2]] == "O"
+          @board[win[0]] == "O" && @board[win[1]] == "O" && @board[win[2]] == "O"
             return win
         end
       end
         return false
       end
 
-    def full?(board)
-      return true unless board.include?(" ")
+    def full?()
+      return true unless @board.include?(" ")
     end
 
-    def draw?(board)
-     if full?(board) && !won?(board)
+    def draw?()
+     if full?() && !won?()
        return true
       end
       return false
     end
 
-    def over?(board)
-      return true while (draw?(board) || won?(board))
+    def over?()
+      return true while (draw?() || won?())
       return false
     end
 
-    def winner(board)
-      if won?(board) && board[won?(board)[0]]  == "X"
+    def winner()
+      if won?() && @board[won?()[0]]  == "X"
         return "X"
-      elsif won?(board) && board[won?(board)[0]] == "O"
+      elsif won?() && @board[won?()[0]] == "O"
         return "O"
       end
       return nil
