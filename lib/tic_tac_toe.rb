@@ -28,7 +28,7 @@ class TicTacToe
     end
 
 
-    def turn()
+    def turn
       #This is my method NOT using recursion
       puts "Please enter 1-9:"
       input = input_to_index(gets.chomp)
