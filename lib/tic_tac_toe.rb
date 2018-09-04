@@ -40,7 +40,7 @@ class TicTacToe
       display_board
     end
 
-    def play(@board)
+    def play
       turn_num = 0
       while turn_num < 10 && !over?()
         turn()
