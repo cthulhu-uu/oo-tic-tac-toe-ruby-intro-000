@@ -35,7 +35,7 @@ class TicTacToe
       if valid_move?(input) == false
         input = gets.chomp
       else
-        move(input, current_player(@board))
+        move(input, current_player)
       end
       display_board
     end
@@ -85,7 +85,7 @@ class TicTacToe
       [2,4,6] # diagonal two
     ]
 
-    def won?()
+    def won?
       WIN_COMBINATIONS.each do |win|
         if @board[win[0]] == "X" && @board[win[1]] == "X" && @board[win[2]] == "X"
           return win
@@ -97,26 +97,26 @@ class TicTacToe
         return false
       end
 
-    def full?()
+    def full?
       return true unless @board.include?(" ")
     end
 
-    def draw?()
-     if full?() && !won?()
+    def draw?
+     if full? && !won?
        return true
       end
       return false
     end
 
-    def over?()
-      return true while (draw?() || won?())
+    def over?
+      return true while (draw? || won?
       return false
     end
 
-    def winner()
-      if won?() && @board[won?()[0]]  == "X"
+    def winner
+      if won? && @board[won?()[0]]  == "X"
         return "X"
-      elsif won?() && @board[won?()[0]] == "O"
+      elsif won? && @board[won?()[0]] == "O"
         return "O"
       end
       return nil
