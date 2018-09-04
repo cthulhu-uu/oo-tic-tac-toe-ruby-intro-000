@@ -1,7 +1,7 @@
 class TicTacToe
   def initialize(board)
     @board = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-    
+  end
     # Helper Method
     def display_board(board)
       puts " #{board[0]} | #{board[1]} | #{board[2]} "
