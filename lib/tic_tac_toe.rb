@@ -42,13 +42,13 @@ class TicTacToe
 
     def play
       turn_num = 0
-      while turn_num < 10 && !over?()
+      while turn_num < 10 && !over?
         turn()
         turn_num +=1
       end
-      if won?()
-        puts "Congratulations #{winner()}!"
-      elsif draw?()
+      if won?
+        puts "Congratulations #{winner}!"
+      elsif draw?
         puts "Cat's Game!"
       end
     end
