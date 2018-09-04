@@ -109,7 +109,7 @@ class TicTacToe
     end
 
     def over?
-      return true while (draw? || won?
+      return true while (draw? || won?)
       return false
     end
 
